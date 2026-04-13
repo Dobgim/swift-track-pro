@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1d4ed8"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+  <!-- Background rounded square -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Package box body -->
+  <path d="M256 120 L380 185 L380 327 L256 392 L132 327 L132 185 Z" fill="none" stroke="white" stroke-width="20" stroke-linejoin="round"/>
+  <!-- Box center line horizontal -->
+  <line x1="132" y1="185" x2="380" y2="185" stroke="white" stroke-width="16" stroke-linecap="round"/>
+  <!-- Box center line vertical -->
+  <line x1="256" y1="185" x2="256" y2="392" stroke="white" stroke-width="16" stroke-linecap="round"/>
+  <!-- Top flaps -->
+  <polyline points="132,185 256,120 380,185" fill="none" stroke="white" stroke-width="20" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Speed lines (tracking motion) -->
+  <line x1="80" y1="220" x2="120" y2="220" stroke="url(#accent)" stroke-width="14" stroke-linecap="round"/>
+  <line x1="60" y1="260" x2="115" y2="260" stroke="url(#accent)" stroke-width="14" stroke-linecap="round"/>
+  <line x1="80" y1="300" x2="120" y2="300" stroke="url(#accent)" stroke-width="14" stroke-linecap="round"/>
+  <!-- Location pin dot -->
+  <circle cx="395" cy="145" r="18" fill="url(#accent)"/>
+  <circle cx="395" cy="145" r="8" fill="white"/>
+</svg>

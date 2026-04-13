@@ -6,14 +6,34 @@
   <title>Services — SwiftTrack Pro</title>
   <meta name="description" content="Explore SwiftTrack Pro's full range of logistics and shipping services — from express delivery to international freight and e-commerce fulfillment." />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar transparent">
   <div class="container navbar-inner">
-    <a href="index.html" class="logo"><div class="logo-icon">📦</div>Swift<span>Track</span> Pro</a>
+    <a href="index.html" class="logo"><div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28" style="display:block">
+        <defs>
+          <linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#3b82f6"/>
+            <stop offset="100%" style="stop-color:#1d4ed8"/>
+          </linearGradient>
+          <linearGradient id="logoAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#10b981"/>
+            <stop offset="100%" style="stop-color:#059669"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="96" fill="url(#logoBg)"/>
+        <path d="M256 140 L370 200 L370 320 L256 380 L142 320 L142 200 Z" fill="none" stroke="white" stroke-width="22" stroke-linejoin="round"/>
+        <line x1="142" y1="200" x2="370" y2="200" stroke="white" stroke-width="18" stroke-linecap="round"/>
+        <line x1="256" y1="200" x2="256" y2="380" stroke="white" stroke-width="18" stroke-linecap="round"/>
+        <line x1="90" y1="230" x2="128" y2="230" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <line x1="72" y1="265" x2="125" y2="265" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <line x1="90" y1="300" x2="128" y2="300" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="385" cy="158" r="18" fill="url(#logoAccent)"/>
+        <circle cx="385" cy="158" r="8" fill="white"/>
+      </svg></div>Swift<span>Track</span> Pro</a>
     <div class="nav-links">
       <a href="index.html">Home</a><a href="about.html">About</a>
       <a href="services.html" class="active">Services</a>
@@ -24,7 +44,7 @@
   </div>
 </nav>
 <div class="mobile-nav" id="mobile-nav">
-  <button class="mobile-close" id="mobile-close">✕</button>
+  <button class="mobile-close" id="mobile-close"><i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></button>
   <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="contact.html">Contact</a>
   <a href="track.html" style="color:var(--blue-light)">Track Package</a>
 </div>
@@ -47,7 +67,7 @@
     </div>
     <div class="services-full-grid">
       <div class="service-full-card" data-animate data-delay="1">
-        <div class="service-icon service-icon-1">📦</div>
+        <div class="service-icon service-icon-1"><i data-lucide="package" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></div>
         <h3>Standard Parcel Delivery</h3>
         <p>Our most popular service — reliable, affordable door-to-door delivery for packages up to 30kg. Perfect for individuals and small businesses shipping domestically or internationally.</p>
         <ul class="service-features-list">
@@ -59,7 +79,7 @@
         </ul>
       </div>
       <div class="service-full-card" data-animate data-delay="2">
-        <div class="service-icon service-icon-2">⚡</div>
+        <div class="service-icon service-icon-2"><i data-lucide="zap" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></div>
         <h3>Express & Same-Day Delivery</h3>
         <p>When time is of the essence. Our express network guarantees next-day delivery in 60+ countries and same-day delivery in major metropolitan areas.</p>
         <ul class="service-features-list">
@@ -71,7 +91,7 @@
         </ul>
       </div>
       <div class="service-full-card" data-animate data-delay="3">
-        <div class="service-icon service-icon-3">🚢</div>
+        <div class="service-icon service-icon-3"><i data-lucide="anchor" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></div>
         <h3>International Air & Sea Freight</h3>
         <p>Cost-effective bulk shipping for businesses. Our freight services handle large volumes, oversized cargo, and special cargo types with full customs management.</p>
         <ul class="service-features-list">
@@ -83,7 +103,7 @@
         </ul>
       </div>
       <div class="service-full-card" data-animate data-delay="4">
-        <div class="service-icon service-icon-4">🏪</div>
+        <div class="service-icon service-icon-4"><i data-lucide="store" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></div>
         <h3>E-Commerce Fulfillment</h3>
         <p>A complete fulfillment partner for online retailers. Store your inventory in our warehouse, we pick, pack, and ship every order on your behalf.</p>
         <ul class="service-features-list">
@@ -107,7 +127,7 @@
         </ul>
       </div>
       <div class="service-full-card" data-animate data-delay="6">
-        <div class="service-icon service-icon-6">🛡️</div>
+        <div class="service-icon service-icon-6"><i data-lucide="shield" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i>️</div>
         <h3>Premium Cargo Insurance</h3>
         <p>Protect your shipments with comprehensive coverage. From high-value electronics to fine art and jewelry, our insurance plans give you full peace of mind.</p>
         <ul class="service-features-list">
@@ -171,12 +191,12 @@
         <div class="pricing-price">$0<span>/mo</span></div>
         <p class="pricing-desc">Perfect for individuals and occasional senders</p>
         <ul class="pricing-list">
-          <li><span class="tick">✓</span> Up to 10 shipments/month</li>
-          <li><span class="tick">✓</span> Standard tracking</li>
-          <li><span class="tick">✓</span> Email support</li>
-          <li><span class="tick">✓</span> Basic insurance included</li>
-          <li><span class="cross">✗</span> Express priority</li>
-          <li><span class="cross">✗</span> Dedicated account manager</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Up to 10 shipments/month</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Standard tracking</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Email support</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Basic insurance included</li>
+          <li><span class="cross"><i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Express priority</li>
+          <li><span class="cross"><i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Dedicated account manager</li>
         </ul>
         <a href="contact.html" class="btn btn-outline-dark" style="width:100%;justify-content:center">Get Started Free</a>
       </div>
@@ -186,12 +206,12 @@
         <div class="pricing-price">$49<span>/mo</span></div>
         <p class="pricing-desc">For small to medium businesses with regular shipping</p>
         <ul class="pricing-list">
-          <li><span class="tick">✓</span> Unlimited shipments</li>
-          <li><span class="tick">✓</span> Real-time GPS tracking</li>
-          <li><span class="tick">✓</span> Priority phone + email</li>
-          <li><span class="tick">✓</span> Enhanced insurance</li>
-          <li><span class="tick">✓</span> Express discount 15%</li>
-          <li><span class="cross">✗</span> Dedicated account manager</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Unlimited shipments</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Real-time GPS tracking</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Priority phone + email</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Enhanced insurance</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Express discount 15%</li>
+          <li><span class="cross"><i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Dedicated account manager</li>
         </ul>
         <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Start Business Plan</a>
       </div>
@@ -200,12 +220,12 @@
         <div class="pricing-price">Custom</div>
         <p class="pricing-desc">For high-volume enterprises with complex logistics needs</p>
         <ul class="pricing-list">
-          <li><span class="tick">✓</span> Unlimited shipments</li>
-          <li><span class="tick">✓</span> Advanced analytics dashboard</li>
-          <li><span class="tick">✓</span> 24/7 dedicated support</li>
-          <li><span class="tick">✓</span> Full cargo insurance</li>
-          <li><span class="tick">✓</span> Express priority lanes</li>
-          <li><span class="tick">✓</span> Dedicated account manager</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Unlimited shipments</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Advanced analytics dashboard</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> 24/7 dedicated support</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Full cargo insurance</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Express priority lanes</li>
+          <li><span class="tick"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Dedicated account manager</li>
         </ul>
         <a href="contact.html" class="btn btn-outline-dark" style="width:100%;justify-content:center">Contact Sales</a>
       </div>
@@ -234,7 +254,27 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo" style="margin-bottom:1rem"><div class="logo-icon">📦</div>Swift<span>Track</span> Pro</div>
+        <div class="logo" style="margin-bottom:1rem"><div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28" style="display:block">
+        <defs>
+          <linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#3b82f6"/>
+            <stop offset="100%" style="stop-color:#1d4ed8"/>
+          </linearGradient>
+          <linearGradient id="logoAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#10b981"/>
+            <stop offset="100%" style="stop-color:#059669"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="96" fill="url(#logoBg)"/>
+        <path d="M256 140 L370 200 L370 320 L256 380 L142 320 L142 200 Z" fill="none" stroke="white" stroke-width="22" stroke-linejoin="round"/>
+        <line x1="142" y1="200" x2="370" y2="200" stroke="white" stroke-width="18" stroke-linecap="round"/>
+        <line x1="256" y1="200" x2="256" y2="380" stroke="white" stroke-width="18" stroke-linecap="round"/>
+        <line x1="90" y1="230" x2="128" y2="230" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <line x1="72" y1="265" x2="125" y2="265" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <line x1="90" y1="300" x2="128" y2="300" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="385" cy="158" r="18" fill="url(#logoAccent)"/>
+        <circle cx="385" cy="158" r="8" fill="white"/>
+      </svg></div>Swift<span>Track</span> Pro</div>
         <p>Your trusted global logistics partner since 2009. Delivering reliability to 180+ countries.</p>
         <div class="footer-socials"><a href="#" class="social-btn">f</a><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">in</a><a href="#" class="social-btn">ig</a></div>
       </div>
@@ -247,5 +287,13 @@
 </footer>
 
 <script src="js/main.js"></script>
+
+  <!-- Lucide SVG Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
 </body>
 </html>

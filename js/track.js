@@ -6,13 +6,13 @@ const SUPABASE_URL = 'https://blitracqgaggxuypqbpo.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsaXRyYWNxZ2FnZ3h1eXBxYnBvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5ODU1MjgsImV4cCI6MjA4OTU2MTUyOH0.vAwSRoqGk-nL0BfnXL6-rSSM6MQS6dWcoghLimdVIVs';
 
 const STATUS_CONFIG = {
-  pending:           { label: 'Pending',            icon: '🕐', color: '#d97706', progress: 5 },
-  in_transit:        { label: 'In Transit',          icon: '🚚', color: '#2563eb', progress: 45 },
-  arrived:           { label: 'Arrived at Hub',      icon: '📦', color: '#7c3aed', progress: 65 },
-  out_for_delivery:  { label: 'Out for Delivery',    icon: '🏃', color: '#f97316', progress: 85 },
-  delivered:         { label: 'Delivered',           icon: '✅', color: '#059669', progress: 100 },
+  pending:           { label: 'Pending',            icon: '<i data-lucide="clock" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i>', color: '#d97706', progress: 5 },
+  in_transit:        { label: 'In Transit',          icon: '<i data-lucide="truck" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i>', color: '#2563eb', progress: 45 },
+  arrived:           { label: 'Arrived at Hub',      icon: '<i data-lucide="package" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i>', color: '#7c3aed', progress: 65 },
+  out_for_delivery:  { label: 'Out for Delivery',    icon: '<i data-lucide="fast-forward" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i>', color: '#f97316', progress: 85 },
+  delivered:         { label: 'Delivered',           icon: '<i data-lucide="check-circle-2" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i>', color: '#059669', progress: 100 },
   on_hold:           { label: 'On Hold',             icon: '⏸️', color: '#92400e', progress: 30 },
-  exception:         { label: 'Exception',           icon: '⚠️', color: '#dc2626', progress: 20 },
+  exception:         { label: 'Exception',           icon: '<i data-lucide="alert-triangle" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i>️', color: '#dc2626', progress: 20 },
 };
 
 // ── Fetch shipment data ──────────────────────────────────────
@@ -88,7 +88,7 @@ function renderResult(shipment, history) {
         const hCfg        = STATUS_CONFIG[h.status] || {};
         return `
         <div class="track-event ${isFirst ? 'current' : ''} ${isDelivered ? 'delivered' : ''}">
-          <div class="track-event-status">${hCfg.icon || '📍'} ${hCfg.label || h.status}</div>
+          <div class="track-event-status">${hCfg.icon || '<i data-lucide="map-pin" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i>'} ${hCfg.label || h.status}</div>
           <div class="track-event-location">${h.location || 'Location not specified'}</div>
           ${h.description ? `<div class="track-event-desc">${h.description}</div>` : ''}
           <div class="track-event-time">${new Date(h.timestamp).toLocaleString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit' })}</div>
@@ -114,7 +114,7 @@ async function handleTrack(code) {
 
   const trackCode = (code || trackInput?.value || '').trim().toUpperCase();
   if (!trackCode) {
-    if (errorBox) errorBox.innerHTML = `<div class="alert alert-error">⚠ Please enter a tracking number.</div>`;
+    if (errorBox) errorBox.innerHTML = `<div class="alert alert-error"><i data-lucide="alert-triangle" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Please enter a tracking number.</div>`;
     return;
   }
 
@@ -129,7 +129,7 @@ async function handleTrack(code) {
     if (!shipment) {
       if (errorBox) errorBox.innerHTML = `
         <div class="alert alert-error">
-          ✗ No shipment found for <strong>${trackCode}</strong>. Please check the tracking number and try again.
+          <i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> No shipment found for <strong>${trackCode}</strong>. Please check the tracking number and try again.
         </div>`;
       return;
     }
@@ -142,11 +142,11 @@ async function handleTrack(code) {
     window.history.pushState({}, '', newUrl);
 
   } catch (err) {
-    if (errorBox) errorBox.innerHTML = `<div class="alert alert-error">✗ An error occurred. Please check your connection and try again.</div>`;
+    if (errorBox) errorBox.innerHTML = `<div class="alert alert-error"><i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> An error occurred. Please check your connection and try again.</div>`;
     console.error(err);
   } finally {
     if (trackBtn) {
-      trackBtn.innerHTML = '<span>🔍</span> Track Shipment';
+      trackBtn.innerHTML = '<span><i data-lucide="search" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Track Shipment';
       trackBtn.disabled  = false;
     }
   }

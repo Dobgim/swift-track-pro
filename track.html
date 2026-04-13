@@ -6,14 +6,34 @@
   <title>Track Your Package — SwiftTrack Pro</title>
   <meta name="description" content="Enter your tracking number to get real-time updates on your SwiftTrack Pro shipment — status, location, history, and estimated delivery." />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar scrolled">
   <div class="container navbar-inner">
-    <a href="index.html" class="logo"><div class="logo-icon">📦</div>Swift<span>Track</span> Pro</a>
+    <a href="index.html" class="logo"><div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28" style="display:block">
+        <defs>
+          <linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#3b82f6"/>
+            <stop offset="100%" style="stop-color:#1d4ed8"/>
+          </linearGradient>
+          <linearGradient id="logoAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#10b981"/>
+            <stop offset="100%" style="stop-color:#059669"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="96" fill="url(#logoBg)"/>
+        <path d="M256 140 L370 200 L370 320 L256 380 L142 320 L142 200 Z" fill="none" stroke="white" stroke-width="22" stroke-linejoin="round"/>
+        <line x1="142" y1="200" x2="370" y2="200" stroke="white" stroke-width="18" stroke-linecap="round"/>
+        <line x1="256" y1="200" x2="256" y2="380" stroke="white" stroke-width="18" stroke-linecap="round"/>
+        <line x1="90" y1="230" x2="128" y2="230" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <line x1="72" y1="265" x2="125" y2="265" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <line x1="90" y1="300" x2="128" y2="300" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="385" cy="158" r="18" fill="url(#logoAccent)"/>
+        <circle cx="385" cy="158" r="8" fill="white"/>
+      </svg></div>Swift<span>Track</span> Pro</a>
     <div class="nav-links">
       <a href="index.html">Home</a><a href="about.html">About</a>
       <a href="services.html">Services</a><a href="contact.html">Contact</a>
@@ -23,7 +43,7 @@
   </div>
 </nav>
 <div class="mobile-nav" id="mobile-nav">
-  <button class="mobile-close" id="mobile-close">✕</button>
+  <button class="mobile-close" id="mobile-close"><i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></button>
   <a href="index.html">Home</a><a href="about.html">About</a>
   <a href="services.html">Services</a><a href="contact.html">Contact</a>
   <a href="track.html" style="color:var(--blue-light)">Track Package</a>
@@ -39,7 +59,7 @@
     <!-- Search Box -->
     <div class="track-box" data-animate>
       <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem">
-        <div style="width:3.5rem;height:3.5rem;background:var(--blue-pale);border-radius:.85rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">📡</div>
+        <div style="width:3.5rem;height:3.5rem;background:var(--blue-pale);border-radius:.85rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0"><i data-lucide="radio" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></div>
         <div>
           <h2 style="margin:0">Track Your Shipment</h2>
           <p style="margin:.25rem 0 0;color:var(--gray-400);font-size:.875rem">Enter your SwiftTrack Pro tracking number below for real-time updates</p>
@@ -60,14 +80,14 @@
             style="text-transform:uppercase;font-size:1.1rem;letter-spacing:.05em;font-weight:600"
           />
           <button type="submit" id="track-btn" class="btn btn-primary btn-lg" style="white-space:nowrap;min-width:180px;justify-content:center">
-            <span>🔍</span> Track Shipment
+            <span><i data-lucide="search" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span> Track Shipment
           </button>
         </div>
       </form>
 
       <!-- Tips -->
       <div style="margin-top:1.25rem;padding:.9rem 1.1rem;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-size:.825rem;color:var(--gray-500);display:flex;align-items:flex-start;gap:.6rem">
-        <span>💡</span>
+        <span><i data-lucide="lightbulb" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></span>
         <span>Your tracking number was emailed to you when your shipment was booked. It starts with <strong>SWT</strong> followed by letters and numbers. Example: <strong>SWT26XYZ789</strong></span>
       </div>
     </div>
@@ -140,7 +160,7 @@
 
         <!-- Special Notes -->
         <div style="margin-top:1rem;padding:1rem;background:var(--orange-pale);border:1px solid rgba(249,115,22,.2);border-radius:var(--radius-sm);display:none" id="notes-wrapper">
-          <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--orange);margin-bottom:.35rem">📌 Special Notes</div>
+          <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--orange);margin-bottom:.35rem"><i data-lucide="pin" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Special Notes</div>
           <div style="font-size:.9rem;color:var(--gray-700)" id="result-notes">—</div>
         </div>
       </div>
@@ -148,7 +168,7 @@
       <!-- Shipment Timeline -->
       <div class="track-box">
         <div class="timeline-section">
-          <h3>📋 Shipment History</h3>
+          <h3><i data-lucide="clipboard" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Shipment History</h3>
           <div class="track-timeline" id="result-timeline">
             <!-- Populated by JS -->
           </div>
@@ -170,17 +190,17 @@
       <h3 style="text-align:center;font-size:1.3rem;color:var(--navy);margin-bottom:1.75rem">Why Track with SwiftTrack Pro?</h3>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
         <div style="text-align:center;padding:1.75rem;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md)">
-          <div style="font-size:2rem;margin-bottom:.75rem">📡</div>
+          <div style="font-size:2rem;margin-bottom:.75rem"><i data-lucide="radio" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></div>
           <h4 style="color:var(--navy);margin-bottom:.4rem;font-size:1rem">Live GPS Tracking</h4>
           <p style="font-size:.85rem;color:var(--gray-500)">Real-time location updates at every checkpoint across our global network.</p>
         </div>
         <div style="text-align:center;padding:1.75rem;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md)">
-          <div style="font-size:2rem;margin-bottom:.75rem">🔔</div>
+          <div style="font-size:2rem;margin-bottom:.75rem"><i data-lucide="bell" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></div>
           <h4 style="color:var(--navy);margin-bottom:.4rem;font-size:1rem">Instant Notifications</h4>
           <p style="font-size:.85rem;color:var(--gray-500)">Get SMS and email alerts the moment your package status changes.</p>
         </div>
         <div style="text-align:center;padding:1.75rem;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md)">
-          <div style="font-size:2rem;margin-bottom:.75rem">📜</div>
+          <div style="font-size:2rem;margin-bottom:.75rem"><i data-lucide="file-text" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></div>
           <h4 style="color:var(--navy);margin-bottom:.4rem;font-size:1rem">Full History Log</h4>
           <p style="font-size:.85rem;color:var(--gray-500)">A complete audit trail of every status change throughout the delivery lifecycle.</p>
         </div>
@@ -195,7 +215,27 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo" style="margin-bottom:1rem"><div class="logo-icon">📦</div>Swift<span>Track</span> Pro</div>
+        <div class="logo" style="margin-bottom:1rem"><div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28" style="display:block">
+        <defs>
+          <linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#3b82f6"/>
+            <stop offset="100%" style="stop-color:#1d4ed8"/>
+          </linearGradient>
+          <linearGradient id="logoAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#10b981"/>
+            <stop offset="100%" style="stop-color:#059669"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="96" fill="url(#logoBg)"/>
+        <path d="M256 140 L370 200 L370 320 L256 380 L142 320 L142 200 Z" fill="none" stroke="white" stroke-width="22" stroke-linejoin="round"/>
+        <line x1="142" y1="200" x2="370" y2="200" stroke="white" stroke-width="18" stroke-linecap="round"/>
+        <line x1="256" y1="200" x2="256" y2="380" stroke="white" stroke-width="18" stroke-linecap="round"/>
+        <line x1="90" y1="230" x2="128" y2="230" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <line x1="72" y1="265" x2="125" y2="265" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <line x1="90" y1="300" x2="128" y2="300" stroke="url(#logoAccent)" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="385" cy="158" r="18" fill="url(#logoAccent)"/>
+        <circle cx="385" cy="158" r="8" fill="white"/>
+      </svg></div>Swift<span>Track</span> Pro</div>
         <p>Your trusted global logistics partner since 2009.</p>
         <div class="footer-socials"><a href="#" class="social-btn">f</a><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">in</a><a href="#" class="social-btn">ig</a></div>
       </div>
@@ -221,5 +261,13 @@
   const notesEl = document.getElementById('result-notes');
   if (notesEl) notesObserver.observe(notesEl, { childList: true, characterData: true, subtree: true });
 </script>
+
+  <!-- Lucide SVG Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
 </body>
 </html>

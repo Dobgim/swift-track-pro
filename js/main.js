@@ -195,9 +195,9 @@ window.addEventListener('pageshow', () => {
       });
       if (!res.ok) throw new Error('Failed');
       form.reset();
-      if (msgDiv) msgDiv.innerHTML = `<div class="alert alert-success">✓ Message sent! We'll get back to you within 24 hours.</div>`;
+      if (msgDiv) msgDiv.innerHTML = `<div class="alert alert-success"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Message sent! We'll get back to you within 24 hours.</div>`;
     } catch {
-      if (msgDiv) msgDiv.innerHTML = `<div class="alert alert-error">✗ Something went wrong. Please try again or email us directly.</div>`;
+      if (msgDiv) msgDiv.innerHTML = `<div class="alert alert-error"><i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Something went wrong. Please try again or email us directly.</div>`;
     } finally {
       submitBtn.innerHTML = origText;
       submitBtn.disabled  = false;

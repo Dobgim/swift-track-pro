@@ -270,9 +270,9 @@ function renderShipmentsTable(data) {
       <td>${s.weight ? s.weight + ' kg' : '—'}</td>
       <td>
         <div class="action-btns">
-          <button class="action-btn" title="View details" onclick="openViewModal('${s.id}')">👁</button>
-          <button class="action-btn" title="Edit shipment" onclick="openEditModal('${s.id}')">✏️</button>
-          <button class="action-btn danger" title="Delete" onclick="deleteShipment('${s.id}','${s.tracking_code}')">🗑</button>
+          <button class="action-btn" title="View details" onclick="openViewModal('${s.id}')"><i data-lucide="eye" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></button>
+          <button class="action-btn" title="Edit shipment" onclick="openEditModal('${s.id}')"><i data-lucide="edit-2" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i>️</button>
+          <button class="action-btn danger" title="Delete" onclick="deleteShipment('${s.id}','${s.tracking_code}')"><i data-lucide="trash-2" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></button>
         </div>
       </td>
     </tr>`).join('');
@@ -355,12 +355,12 @@ function initCreateForm() {
         timestamp:   new Date().toISOString(),
       });
 
-      msgDiv.innerHTML = `<div class="alert alert-success">✓ Shipment created! Tracking code: <strong>${currentCode}</strong></div>`;
+      msgDiv.innerHTML = `<div class="alert alert-success"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Shipment created! Tracking code: <strong>${currentCode}</strong></div>`;
       form.reset();
       currentCode = generateTrackingCode();
       if (codeEl) codeEl.textContent = currentCode;
     } catch (err) {
-      msgDiv.innerHTML = `<div class="alert alert-error">✗ Failed to create shipment. ${err.message}</div>`;
+      msgDiv.innerHTML = `<div class="alert alert-error"><i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Failed to create shipment. ${err.message}</div>`;
     } finally {
       submitBtn.innerHTML = origHtml;
       submitBtn.disabled  = false;
@@ -458,10 +458,10 @@ function initEditModal() {
 
     try {
       await apiPatch('tracking_records', editingId, body);
-      msgDiv.innerHTML = `<div class="alert alert-success">✓ Shipment updated successfully.</div>`;
+      msgDiv.innerHTML = `<div class="alert alert-success"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Shipment updated successfully.</div>`;
       loadShipments();
     } catch (err) {
-      msgDiv.innerHTML = `<div class="alert alert-error">✗ Update failed: ${err.message}</div>`;
+      msgDiv.innerHTML = `<div class="alert alert-error"><i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Update failed: ${err.message}</div>`;
     } finally {
       btn.innerHTML = origHtml;
       btn.disabled  = false;
@@ -540,7 +540,7 @@ function initUpdateForm() {
         timestamp:   new Date(timestamp).toISOString(),
       });
 
-      msgDiv.innerHTML = `<div class="alert alert-success">✓ Status updated to <strong>${newStatus.replace(/_/g,' ')}</strong> successfully.</div>`;
+      msgDiv.innerHTML = `<div class="alert alert-success"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Status updated to <strong>${newStatus.replace(/_/g,' ')}</strong> successfully.</div>`;
       form.querySelector('[name=location]').value = '';
       form.querySelector('[name=update_description]').value = '';
       form.querySelector('[name=timestamp]').value = '';
@@ -551,7 +551,7 @@ function initUpdateForm() {
       prevDiv.innerHTML = '';
 
     } catch (err) {
-      msgDiv.innerHTML = `<div class="alert alert-error">✗ Update failed: ${err.message}</div>`;
+      msgDiv.innerHTML = `<div class="alert alert-error"><i data-lucide="x" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i> Update failed: ${err.message}</div>`;
     } finally {
       btn.innerHTML = origHtml;
       btn.disabled  = false;
@@ -582,9 +582,9 @@ async function loadMessages() {
         <td><span class="status-badge ${m.is_read?'badge-delivered':'badge-pending'}">${m.is_read?'Read':'Unread'}</span></td>
         <td>
           <div class="action-btns">
-            <button class="action-btn" onclick="openMessageModal('${m.id}')" title="View">👁</button>
-            ${!m.is_read ? `<button class="action-btn" onclick="markMessageRead('${m.id}')" title="Mark read">✓</button>` : ''}
-            <button class="action-btn danger" onclick="deleteMessage('${m.id}')" title="Delete">🗑</button>
+            <button class="action-btn" onclick="openMessageModal('${m.id}')" title="View"><i data-lucide="eye" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></button>
+            ${!m.is_read ? `<button class="action-btn" onclick="markMessageRead('${m.id}')" title="Mark read"><i data-lucide="check" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></button>` : ''}
+            <button class="action-btn danger" onclick="deleteMessage('${m.id}')" title="Delete"><i data-lucide="trash-2" style="width:1.2em; height:1.2em; vertical-align:-0.2em; display:inline-block;"></i></button>
           </div>
         </td>
       </tr>`).join('');
