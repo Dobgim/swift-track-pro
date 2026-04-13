@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Your Package — SwiftTrack Pro</title>
+  <meta name="description" content="Enter your tracking number to get real-time updates on your SwiftTrack Pro shipment — status, location, history, and estimated delivery." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled">
+  <div class="container navbar-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">📦</div>Swift<span>Track</span> Pro</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">About</a>
+      <a href="services.html">Services</a><a href="contact.html">Contact</a>
+      <a href="track.html" class="nav-track-btn active">Track Package</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="services.html">Services</a><a href="contact.html">Contact</a>
+  <a href="track.html" style="color:var(--blue-light)">Track Package</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TRACK SECTION
+══════════════════════════════════════════════════════════════ -->
+<div style="height:70px"></div><!-- navbar spacer -->
+<section class="track-section">
+  <div class="container" style="max-width:900px">
+
+    <!-- Search Box -->
+    <div class="track-box" data-animate>
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem">
+        <div style="width:3.5rem;height:3.5rem;background:var(--blue-pale);border-radius:.85rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">📡</div>
+        <div>
+          <h2 style="margin:0">Track Your Shipment</h2>
+          <p style="margin:.25rem 0 0;color:var(--gray-400);font-size:.875rem">Enter your SwiftTrack Pro tracking number below for real-time updates</p>
+        </div>
+      </div>
+
+      <div id="track-error"></div>
+
+      <form id="track-form">
+        <div class="track-form-row">
+          <input
+            type="text"
+            id="track-input"
+            class="form-control"
+            placeholder="e.g. SWT26ABC123"
+            autocomplete="off"
+            autocapitalize="characters"
+            style="text-transform:uppercase;font-size:1.1rem;letter-spacing:.05em;font-weight:600"
+          />
+          <button type="submit" id="track-btn" class="btn btn-primary btn-lg" style="white-space:nowrap;min-width:180px;justify-content:center">
+            <span>🔍</span> Track Shipment
+          </button>
+        </div>
+      </form>
+
+      <!-- Tips -->
+      <div style="margin-top:1.25rem;padding:.9rem 1.1rem;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-size:.825rem;color:var(--gray-500);display:flex;align-items:flex-start;gap:.6rem">
+        <span>💡</span>
+        <span>Your tracking number was emailed to you when your shipment was booked. It starts with <strong>SWT</strong> followed by letters and numbers. Example: <strong>SWT26XYZ789</strong></span>
+      </div>
+    </div>
+
+    <!-- ── RESULT AREA ── -->
+    <div id="result-area" class="result-area">
+
+      <!-- Status Header Card -->
+      <div class="track-box" style="margin-bottom:1.5rem">
+        <div class="shipment-header">
+          <div>
+            <div class="shipment-code">Tracking Number</div>
+            <div class="shipment-title" id="result-tracking-code">—</div>
+          </div>
+          <div id="result-status-badge"></div>
+          <button id="copy-tracking-code" class="btn btn-outline-dark btn-sm" style="height:fit-content">Copy</button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div style="margin-bottom:.65rem;display:flex;justify-content:space-between;font-size:.75rem;color:var(--gray-400)">
+          <span>Pending</span>
+          <span>In Transit</span>
+          <span>At Hub</span>
+          <span>Out for Delivery</span>
+          <span>Delivered</span>
+        </div>
+        <div class="shipment-progress">
+          <div class="progress-fill" id="result-progress" style="width:0%"></div>
+        </div>
+
+        <!-- Info Grid -->
+        <div class="shipment-info-grid" style="margin-top:1.75rem">
+          <div class="info-item">
+            <div class="info-label">Sender</div>
+            <div class="info-value" id="result-sender">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Recipient</div>
+            <div class="info-value" id="result-receiver">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Weight</div>
+            <div class="info-value" id="result-weight">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Origin</div>
+            <div class="info-value" id="result-origin">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Destination</div>
+            <div class="info-value" id="result-destination">—</div>
+          </div>
+          <div class="info-item" style="background:var(--green-pale);border-color:var(--green-light)">
+            <div class="info-label" style="color:var(--green)">Est. Delivery</div>
+            <div class="info-value" style="color:var(--green)" id="result-eta">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Description</div>
+            <div class="info-value" id="result-description">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Registered</div>
+            <div class="info-value" id="result-created">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Last Updated</div>
+            <div class="info-value" id="result-updated">—</div>
+          </div>
+        </div>
+
+        <!-- Special Notes -->
+        <div style="margin-top:1rem;padding:1rem;background:var(--orange-pale);border:1px solid rgba(249,115,22,.2);border-radius:var(--radius-sm);display:none" id="notes-wrapper">
+          <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--orange);margin-bottom:.35rem">📌 Special Notes</div>
+          <div style="font-size:.9rem;color:var(--gray-700)" id="result-notes">—</div>
+        </div>
+      </div>
+
+      <!-- Shipment Timeline -->
+      <div class="track-box">
+        <div class="timeline-section">
+          <h3>📋 Shipment History</h3>
+          <div class="track-timeline" id="result-timeline">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Help Banner -->
+        <div style="margin-top:2rem;padding:1.25rem;background:var(--blue-pale);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <div>
+            <div style="font-size:.9rem;font-weight:600;color:var(--navy)">Need help with your shipment?</div>
+            <div style="font-size:.825rem;color:var(--gray-500);margin-top:.2rem">Our support team is available 24/7 to assist you.</div>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm">Contact Support</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── WHY TRACK WITH US ── -->
+    <div style="margin-top:3rem" data-animate>
+      <h3 style="text-align:center;font-size:1.3rem;color:var(--navy);margin-bottom:1.75rem">Why Track with SwiftTrack Pro?</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
+        <div style="text-align:center;padding:1.75rem;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md)">
+          <div style="font-size:2rem;margin-bottom:.75rem">📡</div>
+          <h4 style="color:var(--navy);margin-bottom:.4rem;font-size:1rem">Live GPS Tracking</h4>
+          <p style="font-size:.85rem;color:var(--gray-500)">Real-time location updates at every checkpoint across our global network.</p>
+        </div>
+        <div style="text-align:center;padding:1.75rem;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md)">
+          <div style="font-size:2rem;margin-bottom:.75rem">🔔</div>
+          <h4 style="color:var(--navy);margin-bottom:.4rem;font-size:1rem">Instant Notifications</h4>
+          <p style="font-size:.85rem;color:var(--gray-500)">Get SMS and email alerts the moment your package status changes.</p>
+        </div>
+        <div style="text-align:center;padding:1.75rem;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md)">
+          <div style="font-size:2rem;margin-bottom:.75rem">📜</div>
+          <h4 style="color:var(--navy);margin-bottom:.4rem;font-size:1rem">Full History Log</h4>
+          <p style="font-size:.85rem;color:var(--gray-500)">A complete audit trail of every status change throughout the delivery lifecycle.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" style="margin-top:3rem">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:1rem"><div class="logo-icon">📦</div>Swift<span>Track</span> Pro</div>
+        <p>Your trusted global logistics partner since 2009.</p>
+        <div class="footer-socials"><a href="#" class="social-btn">f</a><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">in</a><a href="#" class="social-btn">ig</a></div>
+      </div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Help</h4><ul><li><a href="track.html">Track Package</a></li><li><a href="contact.html">Support Center</a></li><li><a href="services.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+18005555555">+1 (800) 555-5555</a></li><li><a href="mailto:info@swifttrackpro.com">info@swifttrackpro.com</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 SwiftTrack Pro. All rights reserved.</p><p>Privacy Policy · Terms of Service</p></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/track.js"></script>
+<script>
+  // Show special notes if present
+  const notesObserver = new MutationObserver(() => {
+    const notes = document.getElementById('result-notes');
+    const wrapper = document.getElementById('notes-wrapper');
+    if (notes && wrapper && notes.textContent && notes.textContent !== 'None' && notes.textContent !== '—') {
+      wrapper.style.display = 'block';
+    }
+  });
+  const notesEl = document.getElementById('result-notes');
+  if (notesEl) notesObserver.observe(notesEl, { childList: true, characterData: true, subtree: true });
+</script>
+</body>
+</html>

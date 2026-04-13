@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — SwiftTrack Pro</title>
+  <meta name="description" content="Get in touch with SwiftTrack Pro. We're available 24/7 to answer your shipping and logistics questions." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar transparent">
+  <div class="container navbar-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">📦</div>Swift<span>Track</span> Pro</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="track.html" class="nav-track-btn">Track Package</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="contact.html">Contact</a>
+  <a href="track.html" style="color:var(--blue-light)">Track Package</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="breadcrumb"><a href="index.html">Home</a> › Contact</div>
+  <h1>Get in Touch</h1>
+  <p>Have a question, need a quote, or want to discuss your shipping requirements? We're here 24/7.</p>
+</section>
+
+<!-- ── CONTACT SECTION ── -->
+<section class="section contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Info -->
+      <div data-animate="left">
+        <div class="section-heading">
+          <span class="badge badge-blue">Contact Info</span>
+          <div class="heading-line"></div>
+          <h2>We're Always Here to Help</h2>
+          <p>No automated bots — real humans who care about your shipment. Reach us through any channel.</p>
+        </div>
+        <div class="contact-info-wrap">
+          <div class="contact-info-card">
+            <div class="contact-info-icon">📞</div>
+            <div>
+              <h4>Phone Support</h4>
+              <p>+1 (800) 555-5555</p>
+              <p style="font-size:.8rem;color:var(--gray-400);margin-top:.2rem">Mon–Fri 8am–8pm EST · Sat 9am–5pm</p>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon">✉️</div>
+            <div>
+              <h4>Email Us</h4>
+              <p>info@swifttrackpro.com</p>
+              <p style="font-size:.8rem;color:var(--gray-400);margin-top:.2rem">We respond within 2–4 business hours</p>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon">💬</div>
+            <div>
+              <h4>Live Chat</h4>
+              <p>Available on our website</p>
+              <p style="font-size:.8rem;color:var(--gray-400);margin-top:.2rem">24/7 live support for urgent shipment issues</p>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon">📍</div>
+            <div>
+              <h4>Head Office</h4>
+              <p>123 Logistics Avenue, Suite 400</p>
+              <p>New York, NY 10001, USA</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Track -->
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--blue-pale);border-radius:var(--radius-md);border:1px solid rgba(59,130,246,.2)">
+          <h4 style="color:var(--navy);margin-bottom:.5rem">🔍 Need to track a package?</h4>
+          <p style="font-size:.875rem;color:var(--gray-600);margin-bottom:1rem">Use our tracking page to get instant updates on your shipment status.</p>
+          <a href="track.html" class="btn btn-primary">Track My Package</a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div data-animate="right">
+        <div class="contact-form-card">
+          <h3>Send Us a Message</h3>
+          <p>Fill in the form below and we'll get back to you as soon as possible.</p>
+          <div id="contact-msg"></div>
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Full Name *</label>
+                <input type="text" id="contact-name" name="name" class="form-control" placeholder="John Doe" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-email">Email Address *</label>
+                <input type="email" id="contact-email" name="email" class="form-control" placeholder="john@example.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="contact-phone">Phone Number</label>
+                <input type="tel" id="contact-phone" name="phone" class="form-control" placeholder="+1 (555) 123-4567" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-subject">Subject *</label>
+                <select id="contact-subject" name="subject" class="form-control" required>
+                  <option value="">Select a topic…</option>
+                  <option value="Track a Shipment">Track a Shipment</option>
+                  <option value="Request a Quote">Request a Quote</option>
+                  <option value="Damaged / Lost Package">Damaged / Lost Package</option>
+                  <option value="Business Inquiry">Business Inquiry</option>
+                  <option value="General Question">General Question</option>
+                  <option value="Partnership">Partnership Opportunity</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message *</label>
+              <textarea id="contact-message" name="message" class="form-control" rows="5" placeholder="Tell us how we can help you…" required style="resize:vertical"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">
+              ✉️ Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OFFICES MAP SECTION ── -->
+<section class="section" style="background:var(--gray-50);padding-top:0;padding-bottom:4rem">
+  <div class="container">
+    <div class="section-heading center text-center" data-animate>
+      <span class="badge badge-blue">Global Offices</span>
+      <div class="heading-line"></div>
+      <h2>Find Your Local Office</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem" data-animate>
+      <div class="card" style="padding:1.75rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:.75rem">🇺🇸</div>
+        <h4 style="color:var(--navy);margin-bottom:.4rem">New York (HQ)</h4>
+        <p style="font-size:.875rem;color:var(--gray-500)">123 Logistics Ave, Suite 400<br>New York, NY 10001</p>
+        <p style="font-size:.825rem;color:var(--blue-mid);margin-top:.5rem">+1 (800) 555-5555</p>
+      </div>
+      <div class="card" style="padding:1.75rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:.75rem">🇬🇧</div>
+        <h4 style="color:var(--navy);margin-bottom:.4rem">London</h4>
+        <p style="font-size:.875rem;color:var(--gray-500)">45 Canary Wharf, Level 9<br>London, E14 5AB, UK</p>
+        <p style="font-size:.825rem;color:var(--blue-mid);margin-top:.5rem">+44 20 7946 0123</p>
+      </div>
+      <div class="card" style="padding:1.75rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:.75rem">🇸🇬</div>
+        <h4 style="color:var(--navy);margin-bottom:.4rem">Singapore</h4>
+        <p style="font-size:.875rem;color:var(--gray-500)">80 Robinson Road, #12-01<br>Singapore 068898</p>
+        <p style="font-size:.825rem;color:var(--blue-mid);margin-top:.5rem">+65 6123 4567</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:1rem"><div class="logo-icon">📦</div>Swift<span>Track</span> Pro</div>
+        <p>Your trusted global logistics partner since 2009.</p>
+        <div class="footer-socials"><a href="#" class="social-btn">f</a><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">in</a><a href="#" class="social-btn">ig</a></div>
+      </div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Standard Delivery</a></li><li><a href="services.html">Express Shipping</a></li><li><a href="services.html">International Freight</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+18005555555">+1 (800) 555-5555</a></li><li><a href="mailto:info@swifttrackpro.com">info@swifttrackpro.com</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 SwiftTrack Pro. All rights reserved.</p><p>Privacy Policy · Terms of Service</p></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — SwiftTrack Pro</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div class="dash-layout">
+
+<!-- ═══════════════════════════════════════════════════════════
+     SIDEBAR
+══════════════════════════════════════════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="dash-logo">
+      <div class="dash-logo-icon">📦</div>
+      <div class="dash-logo-text">Swift<span>Track</span></div>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-label">Main</div>
+    <button class="nav-item active" data-panel="panel-overview">
+      <span class="nav-icon">📊</span> Overview
+    </button>
+    <button class="nav-item" data-panel="panel-shipments">
+      <span class="nav-icon">📦</span> All Shipments
+    </button>
+    <button class="nav-item" data-panel="panel-create">
+      <span class="nav-icon">➕</span> Create Shipment
+    </button>
+    <button class="nav-item" data-panel="panel-update">
+      <span class="nav-icon">🔄</span> Update Status
+    </button>
+
+    <div class="sidebar-section-label">Communication</div>
+    <button class="nav-item" data-panel="panel-messages">
+      <span class="nav-icon">✉️</span> Messages
+      <span class="nav-badge" id="messages-badge" style="display:none">0</span>
+    </button>
+
+    <div class="sidebar-section-label">Links</div>
+    <a href="index.html" class="nav-item" style="text-decoration:none" data-no-transition>
+      <span class="nav-icon">🌐</span> View Website
+    </a>
+    <a href="track.html" class="nav-item" style="text-decoration:none" data-no-transition target="_blank">
+      <span class="nav-icon">🔍</span> Track Package
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-user">
+      <div class="user-avatar-sm" id="admin-initials">A</div>
+      <div>
+        <div class="user-name">Administrator</div>
+        <div class="user-role" id="admin-email">Loading…</div>
+      </div>
+    </div>
+    <button class="logout-btn" id="logout-btn">
+      🚪 Sign Out
+    </button>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN CONTENT
+══════════════════════════════════════════════════════════════ -->
+<main class="dash-main">
+
+  <!-- ── TOP HEADER ── -->
+  <header class="dash-header">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle sidebar">☰</button>
+    <div class="header-title">
+      <h2>Dashboard Overview</h2>
+      <p>Welcome back, Admin</p>
+    </div>
+    <div class="header-actions">
+      <div class="header-search">
+        <span>🔍</span>
+        <input type="text" placeholder="Search shipments…" id="global-search" />
+      </div>
+      <button class="notification-btn" title="Notifications">
+        🔔
+        <span class="notif-dot"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── DASHBOARD BODY ── -->
+  <div class="dash-body">
+
+    <!-- ══════════════════════════════════════════════════════
+         PANEL: OVERVIEW
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="panel active" id="panel-overview">
+      <!-- Overview Cards -->
+      <div class="overview-cards">
+        <div class="overview-card">
+          <div>
+            <div class="ov-label">Total Shipments</div>
+            <div class="ov-value" id="ov-total">—</div>
+            <div class="ov-change">↑ All time</div>
+          </div>
+          <div class="ov-icon ov-icon-blue">📦</div>
+        </div>
+        <div class="overview-card">
+          <div>
+            <div class="ov-label">Delivered</div>
+            <div class="ov-value" id="ov-delivered">—</div>
+            <div class="ov-change" style="color:var(--green-light)">✓ Completed</div>
+          </div>
+          <div class="ov-icon ov-icon-green">✅</div>
+        </div>
+        <div class="overview-card">
+          <div>
+            <div class="ov-label">In Transit</div>
+            <div class="ov-value" id="ov-transit">—</div>
+            <div class="ov-change" style="color:var(--blue-light)">🚚 Moving</div>
+          </div>
+          <div class="ov-icon ov-icon-orange">🚚</div>
+        </div>
+        <div class="overview-card">
+          <div>
+            <div class="ov-label">Pending</div>
+            <div class="ov-value" id="ov-pending">—</div>
+            <div class="ov-change" style="color:var(--yellow)">⏳ Awaiting</div>
+          </div>
+          <div class="ov-icon ov-icon-red">⏳</div>
+        </div>
+      </div>
+
+      <!-- Two-column widgets -->
+      <div class="dash-two-col" style="margin-bottom:1.5rem">
+        <!-- Status Distribution -->
+        <div class="widget">
+          <div class="widget-header">
+            <h3>Shipment Status Distribution</h3>
+          </div>
+          <div class="widget-body">
+            <div class="status-bars">
+              <div class="status-bar-item" data-status="delivered">
+                <span class="status-bar-label">Delivered</span>
+                <div class="status-bar-track"><div class="status-bar-fill" style="background:var(--green-light);width:0%"></div></div>
+                <span class="status-bar-count">0</span>
+              </div>
+              <div class="status-bar-item" data-status="in_transit">
+                <span class="status-bar-label">In Transit</span>
+                <div class="status-bar-track"><div class="status-bar-fill" style="background:var(--blue-light);width:0%"></div></div>
+                <span class="status-bar-count">0</span>
+              </div>
+              <div class="status-bar-item" data-status="out_for_delivery">
+                <span class="status-bar-label">Out for Del.</span>
+                <div class="status-bar-track"><div class="status-bar-fill" style="background:var(--orange);width:0%"></div></div>
+                <span class="status-bar-count">0</span>
+              </div>
+              <div class="status-bar-item" data-status="arrived">
+                <span class="status-bar-label">Arrived Hub</span>
+                <div class="status-bar-track"><div class="status-bar-fill" style="background:#8b5cf6;width:0%"></div></div>
+                <span class="status-bar-count">0</span>
+              </div>
+              <div class="status-bar-item" data-status="pending">
+                <span class="status-bar-label">Pending</span>
+                <div class="status-bar-track"><div class="status-bar-fill" style="background:var(--yellow);width:0%"></div></div>
+                <span class="status-bar-count">0</span>
+              </div>
+              <div class="status-bar-item" data-status="on_hold">
+                <span class="status-bar-label">On Hold</span>
+                <div class="status-bar-track"><div class="status-bar-fill" style="background:#92400e;width:0%"></div></div>
+                <span class="status-bar-count">0</span>
+              </div>
+              <div class="status-bar-item" data-status="exception">
+                <span class="status-bar-label">Exception</span>
+                <div class="status-bar-track"><div class="status-bar-fill" style="background:var(--red);width:0%"></div></div>
+                <span class="status-bar-count">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="widget">
+          <div class="widget-header">
+            <h3>Recent Activity</h3>
+            <button class="btn btn-secondary btn-sm" onclick="document.querySelector('[data-panel=panel-shipments]').click()">View All</button>
+          </div>
+          <div class="widget-body">
+            <div class="activity-list" id="activity-list">
+              <div style="text-align:center;color:var(--gray-400);padding:1rem">Loading…</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Shipments Table -->
+      <div class="widget dash-full-col">
+        <div class="widget-header">
+          <h3>Recent Shipments</h3>
+          <button class="btn btn-primary btn-sm" onclick="document.querySelector('[data-panel=panel-create]').click()">+ New Shipment</button>
+        </div>
+        <div class="widget-body" style="padding:0;overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Tracking Code</th>
+                <th>Sender</th>
+                <th>Recipient</th>
+                <th>Destination</th>
+                <th>Status</th>
+                <th>Created</th>
+              </tr>
+            </thead>
+            <tbody id="recent-shipments-body">
+              <tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--gray-400)">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         PANEL: ALL SHIPMENTS
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="panel" id="panel-shipments">
+      <div class="table-toolbar">
+        <div class="toolbar-filters">
+          <input type="text" id="shipment-search" class="search-input" placeholder="🔍 Search by code, name, location…" />
+          <select id="status-filter" class="filter-select">
+            <option value="">All Statuses</option>
+            <option value="pending">Pending</option>
+            <option value="in_transit">In Transit</option>
+            <option value="arrived">Arrived at Hub</option>
+            <option value="out_for_delivery">Out for Delivery</option>
+            <option value="delivered">Delivered</option>
+            <option value="on_hold">On Hold</option>
+            <option value="exception">Exception</option>
+          </select>
+          <button class="btn btn-secondary btn-sm" onclick="loadShipments()">↺ Refresh</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <span id="shipments-count" style="font-size:.875rem;color:var(--gray-400)">— shipments</span>
+          <button class="btn btn-primary btn-sm" onclick="document.querySelector('[data-panel=panel-create]').click()">+ New Shipment</button>
+        </div>
+      </div>
+
+      <div class="widget">
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Tracking Code</th>
+                <th>Sender</th>
+                <th>Recipient</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Status</th>
+                <th>Weight</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="shipments-tbody">
+              <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--gray-400)">Loading shipments…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         PANEL: CREATE SHIPMENT
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="panel" id="panel-create">
+      <div style="max-width:800px">
+
+        <!-- Generated Code Display -->
+        <div class="form-card" style="margin-bottom:1.5rem">
+          <div class="form-card-header">
+            <h3>Auto-Generated Tracking Code</h3>
+            <p>This unique code will be assigned to the new shipment. Share it with the sender/recipient.</p>
+          </div>
+          <div class="form-card-body">
+            <div class="tracking-code-display">
+              <span class="code" id="generated-code">SWT26—</span>
+              <button id="copy-gen-code" class="copy-btn">Copy</button>
+            </div>
+            <button id="regenerate-code" class="btn btn-secondary btn-sm">🔄 Generate New Code</button>
+          </div>
+        </div>
+
+        <!-- Create Form -->
+        <div class="form-card">
+          <div class="form-card-header">
+            <h3>New Shipment Details</h3>
+            <p>Fill in all the required fields to register a new shipment in the system.</p>
+          </div>
+          <div class="form-card-body">
+            <div id="create-msg"></div>
+
+            <form id="create-shipment-form" class="dash-form">
+              <!-- Row 1: Sender / Receiver -->
+              <div class="dash-form-grid">
+                <div class="form-group">
+                  <label class="form-label">Sender Name *</label>
+                  <input type="text" name="sender_name" class="form-control" placeholder="Full name or company" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Recipient Name *</label>
+                  <input type="text" name="receiver_name" class="form-control" placeholder="Full name or company" required />
+                </div>
+
+                <!-- Row 2: Origin / Destination -->
+                <div class="form-group">
+                  <label class="form-label">Origin (City, Country) *</label>
+                  <input type="text" name="origin" class="form-control" placeholder="e.g. New York, USA" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Destination (City, Country) *</label>
+                  <input type="text" name="destination" class="form-control" placeholder="e.g. London, UK" required />
+                </div>
+
+                <!-- Row 3: Weight / ETA -->
+                <div class="form-group">
+                  <label class="form-label">Weight (kg)</label>
+                  <input type="text" name="weight" class="form-control" placeholder="e.g. 2.5" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Estimated Delivery Date</label>
+                  <input type="date" name="estimated_delivery" class="form-control" />
+                </div>
+
+                <!-- Row 4: Status -->
+                <div class="form-group">
+                  <label class="form-label">Initial Status *</label>
+                  <select name="current_status" class="form-control" required>
+                    <option value="pending">Pending</option>
+                    <option value="in_transit">In Transit</option>
+                    <option value="arrived">Arrived at Hub</option>
+                    <option value="out_for_delivery">Out for Delivery</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="on_hold">On Hold</option>
+                    <option value="exception">Exception</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Package Description</label>
+                  <input type="text" name="description" class="form-control" placeholder="e.g. Electronics, Clothing…" />
+                </div>
+
+                <!-- Row 5: Special Notes (full width) -->
+                <div class="form-group span-2">
+                  <label class="form-label">Special Notes / Instructions</label>
+                  <textarea name="special_notes" class="form-control" rows="3" placeholder="Any special handling instructions, fragile items, customs info, etc." style="resize:vertical"></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="form-card-footer">
+            <button type="submit" form="create-shipment-form" class="btn btn-primary">
+              ✅ Create Shipment
+            </button>
+            <button type="reset" form="create-shipment-form" class="btn btn-secondary">Clear Form</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         PANEL: UPDATE STATUS
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="panel" id="panel-update">
+      <div style="max-width:700px">
+        <div class="form-card">
+          <div class="form-card-header">
+            <h3>Update Shipment Status</h3>
+            <p>Select a shipment, set its new status, and add a history entry with location and notes.</p>
+          </div>
+          <div class="form-card-body">
+            <div id="update-msg"></div>
+
+            <div class="form-group">
+              <label class="form-label">Select Shipment *</label>
+              <select id="update-shipment-select" class="form-control" style="font-size:.875rem">
+                <option value="">Loading shipments…</option>
+              </select>
+            </div>
+            <div id="current-status-preview" style="margin-bottom:1rem"></div>
+
+            <form id="update-status-form" class="dash-form">
+              <div class="dash-form-grid">
+                <div class="form-group">
+                  <label class="form-label">New Status *</label>
+                  <select name="new_status" class="form-control" required>
+                    <option value="pending">Pending</option>
+                    <option value="in_transit">In Transit</option>
+                    <option value="arrived">Arrived at Hub</option>
+                    <option value="out_for_delivery">Out for Delivery</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="on_hold">On Hold</option>
+                    <option value="exception">Exception</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Current Location</label>
+                  <input type="text" name="location" class="form-control" placeholder="e.g. Dubai International Airport, UAE" />
+                </div>
+                <div class="form-group span-2">
+                  <label class="form-label">Update Description / Notes</label>
+                  <textarea name="update_description" class="form-control" rows="3" placeholder="Describe what happened at this checkpoint…" style="resize:vertical"></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Timestamp (leave blank for now)</label>
+                  <input type="datetime-local" name="timestamp" class="form-control" />
+                </div>
+              </div>
+              <div style="margin-top:1rem">
+                <button type="submit" class="btn btn-green">🔄 Update Shipment Status</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Status Reference -->
+        <div class="widget" style="margin-top:1.5rem">
+          <div class="widget-header"><h3>Status Reference Guide</h3></div>
+          <div class="widget-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.65rem">
+              <div style="display:flex;align-items:center;gap:.75rem;padding:.65rem;background:var(--gray-50);border-radius:.5rem">
+                <span class="status-badge badge-pending">Pending</span>
+                <span style="font-size:.8rem;color:var(--gray-500)">Booked, not yet collected</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.75rem;padding:.65rem;background:var(--gray-50);border-radius:.5rem">
+                <span class="status-badge badge-in_transit">In Transit</span>
+                <span style="font-size:.8rem;color:var(--gray-500)">Package is moving</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.75rem;padding:.65rem;background:var(--gray-50);border-radius:.5rem">
+                <span class="status-badge badge-arrived">Arrived at Hub</span>
+                <span style="font-size:.8rem;color:var(--gray-500)">At sorting facility</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.75rem;padding:.65rem;background:var(--gray-50);border-radius:.5rem">
+                <span class="status-badge badge-out_for_delivery">Out for Delivery</span>
+                <span style="font-size:.8rem;color:var(--gray-500)">With delivery driver</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.75rem;padding:.65rem;background:var(--gray-50);border-radius:.5rem">
+                <span class="status-badge badge-delivered">Delivered</span>
+                <span style="font-size:.8rem;color:var(--gray-500)">Successfully delivered</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.75rem;padding:.65rem;background:var(--gray-50);border-radius:.5rem">
+                <span class="status-badge badge-on_hold">On Hold</span>
+                <span style="font-size:.8rem;color:var(--gray-500)">Held — action needed</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.75rem;padding:.65rem;background:var(--gray-50);border-radius:.5rem">
+                <span class="status-badge badge-exception">Exception</span>
+                <span style="font-size:.8rem;color:var(--gray-500)">Issue — customer contact</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         PANEL: MESSAGES
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="panel" id="panel-messages">
+      <div class="table-toolbar">
+        <h3 style="font-size:1rem;color:var(--navy)">Customer Messages</h3>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <span id="messages-count" style="font-size:.875rem;color:var(--gray-400)">— messages</span>
+          <button class="btn btn-secondary btn-sm" onclick="loadMessages()">↺ Refresh</button>
+        </div>
+      </div>
+
+      <div class="widget">
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="messages-tbody">
+              <tr><td colspan="6" style="text-align:center;padding:3rem;color:var(--gray-400)">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /dash-body -->
+</main>
+</div><!-- /dash-layout -->
+
+<!-- ═══════════════════════════════════════════════════════════
+     MODALS
+══════════════════════════════════════════════════════════════ -->
+
+<!-- VIEW SHIPMENT MODAL -->
+<div class="modal-overlay" id="view-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Shipment Details</h3>
+      <button class="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+        <div>
+          <div style="font-size:.75rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem">Tracking Number</div>
+          <div style="font-family:monospace;font-size:1.3rem;font-weight:700;color:var(--blue-mid)" id="view-modal-code">—</div>
+        </div>
+        <div id="view-modal-status"></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem">
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem">Sender</div>
+          <div style="font-weight:600;color:var(--navy)" id="view-modal-sender">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem">Recipient</div>
+          <div style="font-weight:600;color:var(--navy)" id="view-modal-receiver">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem">Origin</div>
+          <div style="font-weight:600;color:var(--navy)" id="view-modal-origin">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem">Destination</div>
+          <div style="font-weight:600;color:var(--navy)" id="view-modal-destination">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem">Weight</div>
+          <div style="font-weight:600;color:var(--navy)" id="view-modal-weight">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--green-pale);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--green);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem">Est. Delivery</div>
+          <div style="font-weight:600;color:var(--green)" id="view-modal-eta">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem">Description</div>
+          <div style="font-weight:500;color:var(--gray-700)" id="view-modal-description">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem">Created</div>
+          <div style="font-weight:500;color:var(--gray-700)" id="view-modal-created">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--orange-pale);border-radius:.5rem;grid-column:1/-1">
+          <div style="font-size:.72rem;color:var(--orange);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem">Special Notes</div>
+          <div style="font-weight:500;color:var(--gray-700)" id="view-modal-notes">—</div>
+        </div>
+      </div>
+
+      <h4 style="font-size:.95rem;color:var(--navy);margin-bottom:1rem;padding-top:.75rem;border-top:1px solid var(--gray-100)">📋 Shipment History</h4>
+      <div id="view-modal-history">
+        <div style="color:var(--gray-400);font-size:.875rem">Loading history…</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary modal-close">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT SHIPMENT MODAL -->
+<div class="modal-overlay" id="edit-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="edit-modal-title">Edit Shipment</h3>
+      <button class="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="edit-msg"></div>
+      <form id="edit-form" class="dash-form">
+        <div class="dash-form-grid">
+          <div class="form-group">
+            <label class="form-label">Sender Name *</label>
+            <input type="text" name="sender_name" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Recipient Name *</label>
+            <input type="text" name="receiver_name" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Origin *</label>
+            <input type="text" name="origin" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Destination *</label>
+            <input type="text" name="destination" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Weight (kg)</label>
+            <input type="text" name="weight" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Est. Delivery Date</label>
+            <input type="date" name="estimated_delivery" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Status *</label>
+            <select name="current_status" class="form-control" required>
+              <option value="pending">Pending</option>
+              <option value="in_transit">In Transit</option>
+              <option value="arrived">Arrived at Hub</option>
+              <option value="out_for_delivery">Out for Delivery</option>
+              <option value="delivered">Delivered</option>
+              <option value="on_hold">On Hold</option>
+              <option value="exception">Exception</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <input type="text" name="description" class="form-control" />
+          </div>
+          <div class="form-group span-2">
+            <label class="form-label">Special Notes</label>
+            <textarea name="special_notes" class="form-control" rows="2" style="resize:vertical"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary modal-close">Cancel</button>
+      <button type="submit" form="edit-form" class="btn btn-primary">💾 Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- MESSAGE VIEW MODAL -->
+<div class="modal-overlay" id="message-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Customer Message</h3>
+      <button class="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.25rem">
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.2rem">From</div>
+          <div style="font-weight:600" class="msg-from">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.2rem">Email</div>
+          <div style="font-weight:500" class="msg-email">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.2rem">Phone</div>
+          <div class="msg-phone">—</div>
+        </div>
+        <div style="padding:.85rem;background:var(--gray-50);border-radius:.5rem">
+          <div style="font-size:.72rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.2rem">Received</div>
+          <div class="msg-time">—</div>
+        </div>
+      </div>
+      <div style="padding:.85rem;background:var(--blue-pale);border-radius:.5rem;margin-bottom:1.25rem">
+        <div style="font-size:.72rem;color:var(--blue-mid);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.2rem">Subject</div>
+        <div style="font-weight:600;color:var(--navy)" class="msg-subject">—</div>
+      </div>
+      <div style="padding:1.25rem;background:var(--gray-50);border-radius:.5rem;line-height:1.7;font-size:.9rem;color:var(--gray-700)" class="msg-body">—</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary modal-close">Close</button>
+      <a href="#" id="reply-btn" class="btn btn-primary" onclick="replyToMessage()">↩ Reply via Email</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/admin.js"></script>
+<script>
+  // Global search redirect to shipments panel
+  document.getElementById('global-search')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const q = e.target.value.trim();
+      if (q) {
+        document.querySelector('[data-panel=panel-shipments]').click();
+        setTimeout(() => {
+          const searchInput = document.getElementById('shipment-search');
+          if (searchInput) { searchInput.value = q; searchInput.dispatchEvent(new Event('input')); }
+        }, 200);
+      }
+    }
+  });
+
+  // Reply to message
+  function replyToMessage() {
+    const email = document.querySelector('.msg-email')?.textContent;
+    const subject = document.querySelector('.msg-subject')?.textContent;
+    if (email) window.location.href = `mailto:${email}?subject=Re: ${encodeURIComponent(subject || '')}`;
+  }
+  window.replyToMessage = replyToMessage;
+</script>
+</body>
+</html>

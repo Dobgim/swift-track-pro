@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwiftTrack Pro — Global Shipment Tracking</title>
+  <meta name="description" content="Track your packages worldwide with SwiftTrack Pro. Real-time shipment tracking, worldwide delivery, and express logistics solutions you can trust." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════════════════════ -->
+<nav class="navbar transparent">
+  <div class="container navbar-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">📦</div>
+      Swift<span>Track</span> Pro
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="track.html" class="nav-track-btn">Track Package</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="contact.html">Contact</a>
+  <a href="track.html" style="color:var(--blue-light)">Track Package</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <!-- Dynamic Background Slider -->
+  <div class="hero-slider">
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
+  
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">🌍 Trusted Worldwide Since 2009</div>
+      <h1>Ship. Track. Deliver.<br /><span class="text-gradient">On Time, Every Time.</span></h1>
+      <p>SwiftTrack Pro connects businesses and individuals to a global logistics network. Real-time tracking, verified carriers, and guaranteed delivery you can count on.</p>
+      <div class="hero-cta">
+        <a href="track.html" class="btn btn-primary btn-lg">🔍 Track My Package</a>
+        <a href="services.html" class="btn btn-outline btn-lg">Explore Services</a>
+      </div>
+
+      <!-- Quick Track Widget -->
+      <div class="hero-track-widget">
+        <h3>Quick Track</h3>
+        <form id="hero-track-form">
+          <div class="track-input-row">
+            <input type="text" id="hero-track-input" class="form-control" placeholder="Enter tracking number e.g. SWT26ABC123" />
+            <button type="submit" class="btn btn-primary">Track</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-number" data-count="500000">0</div>
+          <div class="hero-stat-label">Packages Delivered</div>
+        </div>
+        <div>
+          <div class="hero-stat-number" data-count="180">0</div>
+          <div class="hero-stat-label">Countries Reached</div>
+        </div>
+        <div>
+          <div class="hero-stat-number" data-count="99">0</div>
+          <div class="hero-stat-label">% On-time Rate</div>
+        </div>
+        <div>
+          <div class="hero-stat-number" data-count="15">0</div>
+          <div class="hero-stat-label">Years of Service</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     INTRO / COMPANY
+══════════════════════════════════════════════════════════════ -->
+<section class="section intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-img-wrap" data-animate="left">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&q=80" alt="Global logistics warehouse" loading="lazy" style="border-radius:1.5rem" />
+        <div class="intro-img-badge">
+          <div class="number">15+</div>
+          <div class="label">Years Delivering</div>
+        </div>
+      </div>
+      <div data-animate="right">
+        <div class="section-heading">
+          <span class="badge badge-blue">About Us</span>
+          <div class="heading-line"></div>
+          <h2>The Logistics Partner That Businesses Trust</h2>
+          <p>Since 2009, SwiftTrack Pro has been connecting senders to recipients across 180+ countries. We combine cutting-edge technology with a human touch to make every delivery a promise kept.</p>
+        </div>
+        <div class="intro-features">
+          <div class="intro-feature">
+            <div class="feature-icon-sm">🛡️</div>
+            <div>
+              <h4 style="font-size:.95rem;color:var(--navy);margin-bottom:.2rem">Fully Insured</h4>
+              <p style="font-size:.825rem;color:var(--gray-500)">Every shipment protected</p>
+            </div>
+          </div>
+          <div class="intro-feature">
+            <div class="feature-icon-sm">📡</div>
+            <div>
+              <h4 style="font-size:.95rem;color:var(--navy);margin-bottom:.2rem">Real-time Updates</h4>
+              <p style="font-size:.825rem;color:var(--gray-500)">Track every step live</p>
+            </div>
+          </div>
+          <div class="intro-feature">
+            <div class="feature-icon-sm">⚡</div>
+            <div>
+              <h4 style="font-size:.95rem;color:var(--navy);margin-bottom:.2rem">Express Options</h4>
+              <p style="font-size:.825rem;color:var(--gray-500)">Next-day on select routes</p>
+            </div>
+          </div>
+          <div class="intro-feature">
+            <div class="feature-icon-sm">🌍</div>
+            <div>
+              <h4 style="font-size:.95rem;color:var(--navy);margin-bottom:.2rem">Global Network</h4>
+              <p style="font-size:.825rem;color:var(--gray-500)">180+ countries covered</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:2rem">
+          <a href="about.html" class="btn btn-outline-dark">Learn More About Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SERVICES
+══════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading center text-center" data-animate>
+      <span class="badge badge-blue">Our Services</span>
+      <div class="heading-line"></div>
+      <h2>Everything You Need for Global Shipping</h2>
+      <p>From small parcels to full freight, we have a solution tailored to your needs.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-animate data-delay="1">
+        <div class="service-icon service-icon-1">📦</div>
+        <h3>Standard Parcel Delivery</h3>
+        <p>Reliable door-to-door delivery for standard packages within 3–7 business days across our full network.</p>
+      </div>
+      <div class="service-card" data-animate data-delay="2">
+        <div class="service-icon service-icon-2">⚡</div>
+        <h3>Express & Same-Day</h3>
+        <p>When speed is critical. Next-day and same-day delivery options in major cities worldwide.</p>
+      </div>
+      <div class="service-card" data-animate data-delay="3">
+        <div class="service-icon service-icon-3">🚢</div>
+        <h3>International Freight</h3>
+        <p>Sea and air freight solutions for bulk cargo, industrial equipment, and international trade.</p>
+      </div>
+      <div class="service-card" data-animate data-delay="4">
+        <div class="service-icon service-icon-4">🏪</div>
+        <h3>E-Commerce Fulfillment</h3>
+        <p>End-to-end order fulfillment, warehousing and last-mile delivery for online stores of all sizes.</p>
+      </div>
+      <div class="service-card" data-animate data-delay="5">
+        <div class="service-icon service-icon-5">📡</div>
+        <h3>Real-Time Tracking</h3>
+        <p>Every shipment comes with a unique tracking code and live updates at every checkpoint.</p>
+      </div>
+      <div class="service-card" data-animate data-delay="6">
+        <div class="service-icon service-icon-6">🛡️</div>
+        <h3>Cargo Insurance</h3>
+        <p>Full cargo insurance options for high-value shipments, giving you complete peace of mind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════════════════════════════ -->
+<section class="section how-section">
+  <div class="container">
+    <div class="section-heading center text-center" data-animate>
+      <span class="badge" style="background:rgba(59,130,246,.2);color:var(--blue-light)">How It Works</span>
+      <div class="heading-line"></div>
+      <h2>Ship in 4 Simple Steps</h2>
+      <p style="color:rgba(255,255,255,.6)">Our streamlined process makes sending and tracking packages effortless.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card" data-animate data-delay="1">
+        <div class="step-number">1</div>
+        <h3>Book Your Shipment</h3>
+        <p>Tell us where you're sending, what you're sending, and your preferred delivery speed.</p>
+      </div>
+      <div class="step-card" data-animate data-delay="2">
+        <div class="step-number">2</div>
+        <h3>Get Your Tracking Code</h3>
+        <p>Receive a unique tracking number instantly via email or SMS for your records.</p>
+      </div>
+      <div class="step-card" data-animate data-delay="3">
+        <div class="step-number">3</div>
+        <h3>We Pick Up & Ship</h3>
+        <p>Our verified couriers collect your package and begin the delivery journey within hours.</p>
+      </div>
+      <div class="step-card" data-animate data-delay="4">
+        <div class="step-number">4</div>
+        <h3>Track & Receive</h3>
+        <p>Follow your package in real time. Get notified at every checkpoint until delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     WHY CHOOSE US
+══════════════════════════════════════════════════════════════ -->
+<section class="section why-section">
+  <div class="container">
+    <div class="why-grid">
+      <div data-animate="left">
+        <div class="section-heading">
+          <span class="badge badge-green">Why Choose Us</span>
+          <div class="heading-line"></div>
+          <h2>Built on Trust, Powered by Technology</h2>
+          <p>We don't just move packages — we move trust. Here's why 50,000+ customers choose SwiftTrack Pro.</p>
+        </div>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-icon">🛰️</div>
+            <div>
+              <h4>Live GPS Tracking</h4>
+              <p>Every shipment is monitored with GPS and IoT sensors. See exactly where your package is at any moment.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🤝</div>
+            <div>
+              <h4>Dedicated Support Team</h4>
+              <p>24/7 customer support available via phone, email, and live chat. A real human is always one click away.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🔒</div>
+            <div>
+              <h4>Secure & Insured</h4>
+              <p>Every shipment is covered with our standard cargo protection. Premium insurance upgrades available.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">💰</div>
+            <div>
+              <h4>Transparent Pricing</h4>
+              <p>No hidden fees, no surprises. Get an upfront quote before you commit to any service.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual" data-animate="right">
+        <div class="stats-card-grid">
+          <div class="stat-card">
+            <div class="stat-number" data-count="99.7">0</div>
+            <div class="stat-label">On-time Delivery Rate</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="180">0</div>
+            <div class="stat-label">Countries Served</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="50000">0</div>
+            <div class="stat-label">Happy Customers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="24">0</div>
+            <div class="stat-label">Hour Support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════════════════════ -->
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="section-heading center text-center" data-animate>
+      <span class="badge badge-blue">Testimonials</span>
+      <div class="heading-line"></div>
+      <h2>Loved by Customers Worldwide</h2>
+      <p>Don't take our word for it — hear from the thousands of businesses and individuals we've served.</p>
+    </div>
+  </div>
+  <div class="testimonials-slider" data-animate>
+    <div class="testimonials-track" id="testimonials-track">
+      <!-- 8 reviews hardcoded for reliability -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Absolutely seamless experience from start to finish. My package arrived a day early and the tracking was spot on. SwiftTrack Pro is now my go-to for all international shipments."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">JM</div>
+          <div>
+            <div class="reviewer-name">James Mitchell</div>
+            <div class="reviewer-role">E-Commerce Owner, UK</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I've used many courier services but SwiftTrack Pro stands out. The real-time tracking is incredibly accurate and their customer service team is responsive and professional."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">SA</div>
+          <div>
+            <div class="reviewer-name">Sofia Andersson</div>
+            <div class="reviewer-role">Import Manager, Sweden</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We ship thousands of packages monthly for our store. SwiftTrack Pro handles everything perfectly. Zero lost packages in 2 years of partnership. The dashboard is super easy to use!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#f97316,#ea580c)">RK</div>
+          <div>
+            <div class="reviewer-name">Rajesh Kapoor</div>
+            <div class="reviewer-role">Retail Director, India</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The peace of mind that comes with knowing exactly where my package is at all times is priceless. SwiftTrack Pro delivered my fragile artwork safely across three continents!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)">CN</div>
+          <div>
+            <div class="reviewer-name">Claudia Neto</div>
+            <div class="reviewer-role">Artist & Gallery Owner, Brazil</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Fast, reliable, and professional. SwiftTrack Pro helped us scale our dropshipping business globally. Their pricing is transparent and the tracking system is better than Amazon's!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#ef4444,#dc2626)">TW</div>
+          <div>
+            <div class="reviewer-name">Tyler Weston</div>
+            <div class="reviewer-role">Dropshipper, USA</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"As a small business owner, reliability is everything. SwiftTrack Pro has never let me down. Their express service got a critical order to my client in Dubai within 48 hours!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#0891b2,#0e7490)">AM</div>
+          <div>
+            <div class="reviewer-name">Amira Hassan</div>
+            <div class="reviewer-role">Boutique Owner, Egypt</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The admin dashboard is a game-changer for managing our corporate shipments. We can track every package for every department in one place. Highly recommended for businesses!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#d97706,#b45309)">LP</div>
+          <div>
+            <div class="reviewer-name">Laurent Petit</div>
+            <div class="reviewer-role">Logistics Manager, France</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Shipped my grandmother's belongings intercontinentally with SwiftTrack Pro's moving freight service. Every item arrived intact, on schedule, and at a very competitive price. Thank you!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#059669,#047857)">NK</div>
+          <div>
+            <div class="reviewer-name">Nadia Kowalski</div>
+            <div class="reviewer-role">Private Customer, Poland</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONTACT PREVIEW CTA
+══════════════════════════════════════════════════════════════ -->
+<section class="section contact-preview">
+  <div class="container">
+    <div class="contact-preview-inner">
+      <div>
+        <h2>Ready to Ship With Confidence?</h2>
+        <p>Talk to a logistics expert today. We'll find the perfect solution for your needs.</p>
+      </div>
+      <div class="contact-btns">
+        <a href="contact.html" class="btn btn-primary btn-lg">Get in Touch</a>
+        <a href="track.html" class="btn btn-outline btn-lg">Track a Package</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:1rem">
+          <div class="logo-icon">📦</div>
+          Swift<span>Track</span> Pro
+        </div>
+        <p>Your trusted global logistics partner since 2009. Delivering reliability to 180+ countries, one package at a time.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="admin-login.html">Admin Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Standard Delivery</a></li>
+          <li><a href="services.html">Express Shipping</a></li>
+          <li><a href="services.html">International Freight</a></li>
+          <li><a href="services.html">E-Commerce Fulfillment</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+18005555555">+1 (800) 555-5555</a></li>
+          <li><a href="mailto:info@swifttrackpro.com">info@swifttrackpro.com</a></li>
+          <li><a href="#">123 Logistics Ave, NY</a></li>
+          <li><a href="#">Mon–Fri 8am–8pm EST</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 SwiftTrack Pro. All rights reserved.</p>
+      <p>Privacy Policy · Terms of Service · Cookie Policy</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
